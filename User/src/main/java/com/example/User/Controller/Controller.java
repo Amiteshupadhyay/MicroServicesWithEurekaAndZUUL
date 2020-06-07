@@ -1,5 +1,7 @@
 package com.example.User.Controller;
 
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.User.DTO.UserDTO;
+import com.example.User.Service.IUserService;
 import com.example.User.VO.UserDetails;
 
 @RestController
@@ -16,6 +20,9 @@ public class Controller {
 	
 	@Autowired
 	private Environment environment;
+	
+	@Autowired
+	IUserService userService;
 
 	@GetMapping("/status/check")
 	public String status() {
@@ -24,6 +31,14 @@ public class Controller {
 	
 	@PostMapping
 	public String createUser(@RequestBody UserDetails userDetails) {
+		
+		
+		ModelMapper modelMapper = new ModelMapper();
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+		
+		UserDTO userDTO = modelMapper.map(UserDetails.class, UserDTO.class);
+		userService.createUser(userDTO);
+		
 		return "User Created";
 		
 	}

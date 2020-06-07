@@ -1897,3 +1897,63 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: Unrecognise
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 16:34:38.141
 !MESSAGE executing callback sts4.classpath.BUYHURFv SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 19:51:51.476
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 19:51:51.504
+!MESSAGE classpath=187 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 19:51:51.508
+!MESSAGE buffering callback sts4.classpath.BUYHURFv User false 187
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 19:51:51.511
+!MESSAGE executing callback sts4.classpath.BUYHURFv 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 19:51:51.535
+!MESSAGE executing callback sts4.classpath.BUYHURFv SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 19:53:04.891
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 19:53:04.902
+!MESSAGE classpath=187 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 19:53:04.904
+!MESSAGE buffering callback sts4.classpath.BUYHURFv User false 187
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 19:53:04.905
+!MESSAGE executing callback sts4.classpath.BUYHURFv 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 19:53:04.927
+!MESSAGE executing callback sts4.classpath.BUYHURFv SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 20:12:35.653
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 20:12:35.664
+!MESSAGE classpath=188 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 20:12:35.668
+!MESSAGE buffering callback sts4.classpath.BUYHURFv User false 188
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 20:12:35.669
+!MESSAGE executing callback sts4.classpath.BUYHURFv 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 20:12:35.686
+!MESSAGE executing callback sts4.classpath.BUYHURFv SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 20:12:40.930
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 20:12:40.935
+!MESSAGE classpath=188 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 20:12:40.938
+!MESSAGE buffering callback sts4.classpath.BUYHURFv User false 188
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 20:12:40.939
+!MESSAGE executing callback sts4.classpath.BUYHURFv 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-07 20:12:40.960
+!MESSAGE executing callback sts4.classpath.BUYHURFv SUCCESS [done]

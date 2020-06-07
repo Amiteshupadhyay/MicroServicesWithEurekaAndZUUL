@@ -1,0 +1,20 @@
+package com.example.User.Service;
+
+import java.util.UUID;
+
+import org.modelmapper.ModelMapper;
+
+import com.example.User.DTO.UserDTO;
+import com.example.User.Data.UserEntity;
+
+public class UserService implements IUserService {
+
+	@Override
+	public UserDTO createUser(UserDTO userDTO) {
+		userDTO.setUserId(UUID.randomUUID().toString());
+		ModelMapper modelMapper = new ModelMapper();
+		UserEntity userEntity = modelMapper.map(userDTO,UserEntity.class);
+		return userDTO;
+	}
+
+}
