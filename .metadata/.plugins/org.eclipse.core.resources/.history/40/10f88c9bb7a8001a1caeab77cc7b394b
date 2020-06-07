@@ -1,0 +1,12 @@
+package com.example.User.Service;
+
+import com.example.User.DTO.UserDTO;
+
+public class UserService implements IUserService {
+
+	@Override
+	public UserDTO createUser(UserDTO userDTO) {
+		return userDTO;
+	}
+
+}
