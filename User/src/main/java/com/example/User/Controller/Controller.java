@@ -17,30 +17,36 @@ import com.example.User.VO.UserDetails;
 @RestController
 @RequestMapping("/user")
 public class Controller {
-	
+
 	@Autowired
 	private Environment environment;
-	
+
 	@Autowired
 	IUserService userService;
 
 	@GetMapping("/status/check")
 	public String status() {
-		return "Working at "+environment.getProperty("local.server.port");
+		return "Working at " + environment.getProperty("local.server.port");
 	}
-	
+
 	@PostMapping
 	public String createUser(@RequestBody UserDetails userDetails) {
+
+//		ModelMapper modelMapper = new ModelMapper();
+//		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+//
+//		UserDTO userDTO = modelMapper.map(UserDetails.class, UserDTO.class);
+		UserDTO userDTO = new UserDTO();
+		userDTO.setEmail(userDetails.getEmail());
+		userDTO.setFirstName(userDetails.getFirstName());
+		userDTO.setLastName(userDetails.getLastName());
 		
-		
-		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-		
-		UserDTO userDTO = modelMapper.map(UserDetails.class, UserDTO.class);
 		userService.createUser(userDTO);
 		
-		return "User Created";
 		
+
+		return "User Created";
+
 	}
 
 }

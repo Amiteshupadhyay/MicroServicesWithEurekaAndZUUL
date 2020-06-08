@@ -7,30 +7,31 @@ public class UserDTO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String password;
+	String FirstName;
+	public String getFirstName() {
+		return FirstName;
+	}
+
+	public void setFirstName(String firstName) {
+		FirstName = firstName;
+	}
+
+	public String getLastName() {
+		return LastName;
+	}
+
+	public void setLastName(String lastName) {
+		LastName = lastName;
+	}
+
+	String LastName;
+	String email;
+	String password;
 	private String userId;
 
 	private String encryptedPassword;
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
+	
 	public String getEmail() {
 		return email;
 	}
