@@ -22,14 +22,12 @@ public class UserService implements IUserService {
 	@Override
 	public UserDTO createUser(UserDTO userDTO) {
 		userDTO.setUserId(UUID.randomUUID().toString());
+		ModelMapper modelMapper = new ModelMapper();
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		
-		UserEntity userEntity = new UserEntity();
-		userEntity.setEmail(userDTO.getEmail());
-		userEntity.setFirstName(userDTO.getFirstName());
-		userEntity.setLastName(userDTO.getLastName());
+		UserEntity userEntity = modelMapper.map(userDTO,UserEntity.class);
+		
 		userEntity.setEncryptedPassword("Test");
-		userEntity.setUserId("Test");
-		
 		userRepo.save(userEntity);
 		return userDTO;
 	}

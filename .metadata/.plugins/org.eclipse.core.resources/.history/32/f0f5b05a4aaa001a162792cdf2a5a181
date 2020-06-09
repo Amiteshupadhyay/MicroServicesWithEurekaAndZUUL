@@ -22,6 +22,10 @@ public class UserService implements IUserService {
 	@Override
 	public UserDTO createUser(UserDTO userDTO) {
 		userDTO.setUserId(UUID.randomUUID().toString());
+//		ModelMapper modelMapper = new ModelMapper();
+//		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+//		
+//		UserEntity userEntity = modelMapper.map(userDTO,UserEntity.class);
 		
 		UserEntity userEntity = new UserEntity();
 		userEntity.setEmail(userDTO.getEmail());
