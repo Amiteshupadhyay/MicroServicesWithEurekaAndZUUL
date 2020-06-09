@@ -34,7 +34,7 @@ public class Controller {
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public UserDTO createUser(@RequestBody UserDetails userDetails) {
+	public ResponseEntity<UserDetails> createUser(@RequestBody UserDetails userDetails) {
 		
 		UserDTO userDTO = new UserDTO();
 		userDTO.setEmail(userDetails.getEmail());
@@ -42,7 +42,8 @@ public class Controller {
 		userDTO.setLastName(userDetails.getLastName());
 		
 		userService.createUser(userDTO);
-		return userDTO;
+		return userService.createUser(userDTO) == null ? new ResponseEntity<UserDetails>(HttpStatus.NO_CONTENT)
+				: new ResponseEntity<UserDetails>(userService.createUser(userDTO), HttpStatus.OK);
 	}
 	/*
 	@PostMapping

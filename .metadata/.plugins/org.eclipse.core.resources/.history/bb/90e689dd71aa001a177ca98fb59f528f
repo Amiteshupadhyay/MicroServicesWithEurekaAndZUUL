@@ -18,19 +18,7 @@ public class UserService implements IUserService {
 	public UserService(UserRepo userRepo) {
 		this.userRepo = userRepo;
 	}
-	@Override
-	public UserDTO createUser(UserDTO userDTO) {
-		UserEntity userEntity = new UserEntity();
-		userEntity.setEmail(userDTO.getEmail());
-		userEntity.setFirstName(userDTO.getFirstName());
-		userEntity.setLastName(userDTO.getLastName());
-		userEntity.setEncryptedPassword("Test");
-		userEntity.setUserId("Test");
-		
-		userRepo.save(userEntity);
-		return userDTO;
-	}
-	/*
+	
 	@Override
 	public UserDTO createUser(UserDTO userDTO) {
 		userDTO.setUserId(UUID.randomUUID().toString());
@@ -45,5 +33,5 @@ public class UserService implements IUserService {
 		userRepo.save(userEntity);
 		return userDTO;
 	}
-*/
+
 }
