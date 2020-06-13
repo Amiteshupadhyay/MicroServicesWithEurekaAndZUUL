@@ -1,10 +1,14 @@
 package com.example.User.Service;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -37,4 +41,31 @@ public class UserService implements IUserService {
 		userRepo.save(userEntity);
 		return userDTO;
 	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		UserEntity userEntity = userRepo.findByEmail(username);
+		if(userEntity == null) throw new UsernameNotFoundException(username);
+		
+		return new User(userEntity.getEmail(),userEntity.getEncryptedPassword(),true,true,true,true,new ArrayList<>());
+	}
+
+	@Override
+	public UserDTO getUserDetailsByEmail(String username) {
+		UserEntity userEntity = userRepo.findByEmail(username);
+		if(userEntity == null) throw new UsernameNotFoundException(username);
+		UserDTO userDTO = new UserDTO();
+		
+		userDTO.setEmail(userEntity.getEmail());
+		userDTO.setFirstName(userEntity.getFirstName());
+		userDTO.setLastName(userEntity.getLastName());
+		userDTO.setUserId(userEntity.getUserId());
+		
+		return userDTO;
+	}
+
+
+	
+	
+	
 }
