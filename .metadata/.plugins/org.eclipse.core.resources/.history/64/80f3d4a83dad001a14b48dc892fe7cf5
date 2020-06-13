@@ -1,0 +1,5 @@
+package com.example.User.VO;
+
+public class LoginRequest {
+
+}

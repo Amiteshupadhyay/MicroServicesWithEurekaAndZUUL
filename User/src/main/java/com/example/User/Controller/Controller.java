@@ -40,25 +40,9 @@ public class Controller {
 		userDTO.setEmail(userDetails.getEmail());
 		userDTO.setFirstName(userDetails.getFirstName());
 		userDTO.setLastName(userDetails.getLastName());
+		userDTO.setPassword(userDetails.getPassword());
 		
 		userService.createUser(userDTO);
 		return userDTO;
 	}
-	/*
-	@PostMapping
-	public String createUser(@RequestBody UserDetails userDetails) {
-
-		UserDTO userDTO = new UserDTO();
-		userDTO.setEmail(userDetails.getEmail());
-		userDTO.setFirstName(userDetails.getFirstName());
-		userDTO.setLastName(userDetails.getLastName());
-		
-		userService.createUser(userDTO);
-		
-		
-
-		return "User Created";
-
-	}*/
-
 }
