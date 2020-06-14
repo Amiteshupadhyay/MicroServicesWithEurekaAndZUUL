@@ -1,0 +1,5 @@
+package com.example.ZuulGateway.security;
+
+public class AuthorizationFilter {
+
+}
