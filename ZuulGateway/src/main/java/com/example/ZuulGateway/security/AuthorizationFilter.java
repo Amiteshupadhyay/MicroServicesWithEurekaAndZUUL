@@ -17,47 +17,53 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import io.jsonwebtoken.Jwts;
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
-
+    
 	Environment environment;
 
-	public AuthorizationFilter(AuthenticationManager authManager, Environment environment) {
-		super(authManager);
-		this.environment = environment;
+    public AuthorizationFilter(AuthenticationManager authManager, Environment environment) {
+        super(authManager);
+        this.environment = environment;
+    }
+    
+    
+    @Override
+    protected void doFilterInternal(HttpServletRequest req,
+            HttpServletResponse res,
+            FilterChain chain) throws IOException, ServletException {
 
-	}
+        String authorizationHeader = req.getHeader(environment.getProperty("authorization.token.header.name"));
 
-	@Override
-	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
-			throws IOException, ServletException {
-		String authorizationHeader = req.getHeader(environment.getProperty("authorization.token.header.name"));
+        if (authorizationHeader == null || !authorizationHeader.startsWith(environment.getProperty("authorization.token.header.prefix"))) {
+            chain.doFilter(req, res);
+            return;
+        }
 
-		if (authorizationHeader == null
-				|| !authorizationHeader.startsWith(environment.getProperty("authorization.token.header.prefix"))) {
-			chain.doFilter(req, res);
-			return;
-		}
-		UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
+        UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
+       
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        chain.doFilter(req, res);
+    }  
+    
+    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest req) {
+        String authorizationHeader = req.getHeader(environment.getProperty("authorization.token.header.name"));
+   
+         if (authorizationHeader == null) {
+             return null;
+         }
 
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		chain.doFilter(req, res);
-	}
+         String token = authorizationHeader.replace(environment.getProperty("authorization.token.header.prefix"), "");
 
-	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest req) {
-		String authorizationHeader = req.getHeader(environment.getProperty("authorization.token.header.name"));
+         String userId = Jwts.parser()
+                 .setSigningKey(environment.getProperty("token.secret"))
+                 .parseClaimsJws(token)
+                 .getBody()
+                 .getSubject();
 
-		if (authorizationHeader == null)
-			return null;
+         if (userId == null) {
+             return null;
+         }
+   
+         return new UsernamePasswordAuthenticationToken(userId, null, new ArrayList<>());
 
-		String token = authorizationHeader.replace(environment.getProperty("authorization.token.header.prefix"), "");
-		UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
-
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		String userId = Jwts.parser().setSigningKey(environment.getProperty("token.secret")).parseClaimsJws(token)
-				.getBody().getSubject();
-		if (userId == null)
-			return null;
-
-		return new UsernamePasswordAuthenticationToken(userId, null, new ArrayList<>());
-	}
-
+     }
 }
