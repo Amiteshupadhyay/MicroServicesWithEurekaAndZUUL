@@ -3,12 +3,11 @@ server.port=8011
 eureka.client.serviceUrl.defaultZone = http://localhost:8010/eureka
 
 api.h2console.url.path = /users-ws/h2-console/**
-api.registration.url.path = */users-ws/user
+api.registration.url.path = /users-ws/user
 api.login.url.path = /users-ws/user/login
+api.users.actuator.url.path=/users-ws/actuator/*
 
 authorization.token.header.name = Authorization
 authorization.token.header.prefix = Bearer
 token.secret = abcd
-
-
 
