@@ -4,7 +4,7 @@ package com.example.User.VO;
 public class UserDetails {
 	
 	String FirstName;
-	String LastName ;
+	String LastName;
 	String email;
 	String password;
 	public String getFirstName() {
